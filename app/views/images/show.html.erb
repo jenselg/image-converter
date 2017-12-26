@@ -55,7 +55,6 @@
     <hr/>
     <p href="#pinterest-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;&nbsp;Pinterest</p>
     <div id="pinterest-collapse" class="collapse">
-      
       <% @pinterest.each do |dimension| %>
         <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
       <% end %>
@@ -78,13 +77,44 @@
     </div>
 
     <hr/>
-    <p class="text-center"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i>&nbsp;&nbsp;Snapchat</p>
+    <p href="#snapchat-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i>&nbsp;&nbsp;Snapchat</p>
+    <div id="snapchat-collapse" class="collapse">
+      <% @snapchat.each do |dimension| %>
+        <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+      <% end %>
+    </div>
 
     <hr/>
-    <p class="text-center"><i class="fa fa-twitch" aria-hidden="true"></i>&nbsp;&nbsp;Twitch</p>
+    <p href="#twitch-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-twitch" aria-hidden="true"></i>&nbsp;&nbsp;Twitch</p>
+    <div id="twitch-collapse" class="collapse">
+      <% @twitch.each do |dimension| %>
+        <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+      <% end %>
+    </div>
+    
+    <hr/>
+    <p href="#tumblr-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-tumblr" aria-hidden="true"></i>&nbsp;&nbsp;Tumblr</p>
+    <div id="tumblr-collapse" class="collapse">
+      <% @tumblr.each do |dimension| %>
+        <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+      <% end %>
+    </div>
 
     <hr/>
-    <p class="text-center"><i class="fa fa-vk" aria-hidden="true"></i>&nbsp;&nbsp;VK</p>
+    <p href="#vk-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-vk" aria-hidden="true"></i>&nbsp;&nbsp;VK (Vkontakte)</p>
+    <div id="vk-collapse" class="collapse">
+      <% @vk.each do |dimension| %>
+        <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+      <% end %>
+    </div>
+
+    <hr/>
+    <p href="#ok-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-odnoklassniki" aria-hidden="true"></i>&nbsp;&nbsp;OK (Odnoklassniki)</p>
+    <div id="ok-collapse" class="collapse">
+      <% @ok.each do |dimension| %>
+        <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+      <% end %>
+    </div>
 
     <hr/>
     <p href="#webbanners-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Web Banners</p>
@@ -95,7 +125,14 @@
     </div>
 
     <hr/>
-    <p class="text-center"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;Print Media</p>
+    <p href="#printmedia-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;Print Media</p>
+    <div id="printmedia-collapse" class="collapse">
+      <% @print_media.each do |dimension| %>
+        <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+      <% end %>
+    </div>  
+
+    <hr/>
     <div class="text-center">
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- AllPic.site > editor > bottom -->
