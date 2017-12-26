@@ -14,5 +14,4 @@
 //= require jquery-3.2.1.min.js
 //= require fabric.min.js
 //= require ffo.js
-//= require spectrum.js
 //= require_tree .
