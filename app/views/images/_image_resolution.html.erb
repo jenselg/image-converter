@@ -1,0 +1,364 @@
+<div class="text-center">
+    <hr/>
+    <a id="generate-<%= dimension[:id] %>" href="#collapse-<%= dimension[:id] %>" data-toggle="collapse">
+        <%= dimension[:name] %> - <%= dimension[:width] %>x<%= dimension[:height] %> pixels
+    </a>
+</div>
+    
+<div id="collapse-<%= dimension[:id] %>" class="collapse">
+    <div class="text-center">
+        <!-- IMAGE -->
+        <br/>
+        <canvas id="canvas-<%= dimension[:id] %>" style="border: 1px dashed silver;">
+        </canvas>
+        <br/>
+        <div id="text-editor-<%= dimension[:id] %>" class="text-center">
+            <p style="font-size: 24px;">Text Adjustments</p>
+            <p class="text-center" style="font-size: 12px;">
+                Drag text box to reposition, and use the box controls on the corners of the text box to resize/rotate.
+            </p>
+            <div>
+                <select id="font-family-<%= dimension[:id] %>"></select>
+            </div>
+            <br/>
+            <div>
+                <select id="font-align-<%= dimension[:id] %>"></select>
+            </div>
+            <br/>
+            <div>
+                <input type="text" id="text-color-<%= dimension[:id] %>" />
+            </div>
+            <br/>
+            <div>
+                <a id="removetext-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Remove This Text</a>
+            </div>
+        </div>
+        <div id="image-editor-<%= dimension[:id] %>" class="text-center">
+            <p style="font-size: 24px;">Image Adjustments</p>
+            <p class="text-center" style="font-size: 12px;">
+                Drag image to reposition, and use the box controls on the corners of the image to resize/rotate.
+            </p>
+            <div>
+                <p style="margin-bottom: 0;">Blur</p><input id="image-blur-<%= dimension[:id] %>"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0"
+                />
+            </div>
+            <div>
+                <p style="margin-bottom: 0;">Brightness</p><input id="image-brightness-<%= dimension[:id] %>"
+                    type="range"
+                    min="-1"                    
+                    max="1"                  
+                    step="0.01"
+                    value="0"
+                />
+            </div>
+            <div>
+                <p style="margin-bottom: 0;">Contrast</p><input id="image-contrast-<%= dimension[:id] %>"
+                    type="range"
+                    min="-1"                    
+                    max="1"                  
+                    step="0.01"
+                    value="0"
+                />
+            </div>
+            <div>
+                <p style="margin-bottom: 0;">Saturation</p><input id="image-saturation-<%= dimension[:id] %>"
+                    type="range"
+                    min="-1"                    
+                    max="1"                  
+                    step="0.01"
+                    value="0"
+                />
+            </div>
+
+        </div>
+        <br/>
+        <!-- BUTTONS AND CONTROLS -->
+        <div id="static-buttons">
+            <a id="addtext-<%= dimension[:id] %>" class="btn btn-primary btn-sm link-button">Add Text</a>
+            <a id="revert-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Reset Image</a>
+            <a id="download-<%= dimension[:id] %>" class="btn btn-success btn-sm link-button" download>Download</a>
+        </div>
+    </div>
+</div>
+    
+<script>
+    $(document).ready(function(){
+        fabric.textureSize = 4096;
+        $("#generate-<%= dimension[:id] %>").one('click', function(){
+            var canvas = new fabric.Canvas("canvas-<%= dimension[:id] %>");
+            canvas.setHeight(<%= dimension[:height] %>/("<%= dimension[:scale] %>"));
+            canvas.setWidth(<%= dimension[:width] %>/("<%= dimension[:scale] %>"));
+            canvas.preserveObjectStacking = true;
+            canvas.backgroundColor = 'white';
+            new fabric.Image.fromURL(imgElement, function(imgData){
+                imgData.set('top', 0);
+                imgData.set('left', 0);
+                imgData.scaleToWidth(<%= dimension[:width] %>/("<%= dimension[:scale] %>"));
+                imgData.scaleToHeight(<%= dimension[:height] %>/("<%= dimension[:scale] %>"));
+                canvas.add(imgData);
+                canvas.setActiveObject(imgData);
+                modifiedHandler();
+                $("#revert-<%= dimension[:id] %>").on('click',function(){
+                    canvas.clear();
+                    $("#image-blur-<%= dimension[:id] %>").val(0);
+                    $("#image-brightness-<%= dimension[:id] %>").val(0);
+                    $("#image-contrast-<%= dimension[:id] %>").val(0);
+                    $("#image-saturation-<%= dimension[:id] %>").val(0);
+                    imgData.filters = [];
+                    imgData.applyFilters();
+                    imgData.set('angle', 0);
+                    imgData.set('top', 0);
+                    imgData.set('left', 0);
+                    imgData.scaleToWidth(<%= dimension[:width] %>/("<%= dimension[:scale] %>"));
+                    imgData.scaleToHeight(<%= dimension[:height] %>/("<%= dimension[:scale] %>"));
+                    canvas.preserveObjectStacking = true;
+                    canvas.backgroundColor = 'white';
+                    canvas.add(imgData);
+                    canvas.setActiveObject(imgData);
+                    modifiedHandler();
+                });
+                $("#removetext-<%= dimension[:id] %>").on('click', function(){
+                    if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'textbox') {
+                        var object = canvas.getActiveObject();
+                        canvas.remove(object);
+                        canvas.setActiveObject(imgData);
+                        canvas.renderAll();
+                        modifiedHandler();
+                    }
+                });
+            });
+            $("#addtext-<%= dimension[:id] %>").on('click', function(){
+                var textbox<%= dimension[:id] %> = new fabric.Textbox('DOUBLE CLICK TO EDIT', {
+                    left: 0,
+                    top: 0,
+                    width: 150,
+                    fontSize: 20,
+                    fill: 'black'
+                });
+                canvas.add(textbox<%= dimension[:id] %>).setActiveObject(textbox<%= dimension[:id] %>);
+            });
+            var modifiedHandler = function (evt) {
+                var dataURL = canvas.toDataURL({
+                    multiplier: (1/screenRatio)*("<%= dimension[:scale] %>")
+                });
+                var downloadButton = document.getElementById("download-<%= dimension[:id] %>");
+                downloadButton.addEventListener('click', function(e){
+                    downloadButton.href = dataURL;
+                });
+            }
+            var styleEditor = function (target) {
+                if (target != null) {
+                    if (target.get('type') == 'textbox') {
+                        $("#text-editor-<%= dimension[:id] %>").show();
+                        $("#image-editor-<%= dimension[:id] %>").hide();
+                        $("#font-family-<%= dimension[:id] %>").val(target.fontFamily);
+                        $("#text-color-<%= dimension[:id] %>").spectrum({color: target.fill});
+                        $("#font-align-<%= dimension[:id] %>").val(target.textAlign);
+                    } else if (target.get('type') == 'image') {
+                        $("#image-editor-<%= dimension[:id] %>").show();
+                        $("#text-editor-<%= dimension[:id] %>").hide();
+                    }
+                }
+            }
+            var selectionModify = function (evt) {
+                target = evt.target;
+                styleEditor(target);
+            }
+            canvas.on('object:modified', modifiedHandler);
+            canvas.on('selection:created', selectionModify);
+            canvas.on('selection:cleared', selectionModify);
+            canvas.on('selection:updated', selectionModify);
+
+            // TEXT EDITING
+            var fonts = ['Times New Roman','Impact','Bungee','Risque','Roboto Condensed','Pangolin','Raleway','Open Sans Condensed','Indie Flower','Lobster','Pacifico','Shadows Into Light','Dancing Script','Poiret One','Shrikhand','Teko','Great Vibes','Monoton','Special Elite','Ultra']
+            var fontSelect = document.getElementById("font-family-<%= dimension[:id] %>");
+            fonts.forEach(function(font) {
+                var option = document.createElement('option');
+                option.innerHTML = font;
+                option.value = font;
+                fontSelect.appendChild(option);
+            });
+            var alignments = ['left','center','right'];
+            var alignSelect = document.getElementById("font-align-<%= dimension[:id] %>");
+            alignments.forEach(function(alignment){
+                var option = document.createElement('option');
+                option.innerHTML = "Align " + alignment;
+                option.value = alignment;
+                alignSelect.appendChild(option);
+            });
+            $("#font-align-<%= dimension[:id] %>").on('change', function(){
+                if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'textbox') {
+                    var object = canvas.getActiveObject();
+                    object.set('textAlign', this.value);
+                    canvas.renderAll();
+                    modifiedHandler();
+                }
+            });
+            $("#text-color-<%= dimension[:id] %>").spectrum({});
+            $("#text-color-<%= dimension[:id] %>").on('change', function(){
+                if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'textbox') {
+                    var object = canvas.getActiveObject();
+                    var hexColor = $("#text-color-<%= dimension[:id] %>").spectrum("get").toHexString();
+                    object.set('fill', hexColor);
+                    canvas.renderAll();
+                    modifiedHandler();
+                }
+            });
+            $("#font-family-<%= dimension[:id] %>").on('change', function(){
+                if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'textbox') {
+                    var object = canvas.getActiveObject();
+                    if (this.value == 'Times New Roman') {
+                        object.set('fontFamily', this.value);
+                        canvas.renderAll();
+                        modifiedHandler();  
+                    } else if (this.value == 'Impact') {
+                        object.set('fontFamily', this.value);
+                        canvas.renderAll();
+                        modifiedHandler();   
+                    } else {
+                        loadAndUse(this.value);
+                    }
+                }
+            });
+            function loadAndUse(font) {
+                var myfont = new FontFaceObserver(font)
+                myfont.load()
+                  .then(function() {
+                    canvas.getActiveObject().set("fontFamily", font);
+                    canvas.renderAll();
+                    modifiedHandler(); 
+                  }).catch(function(e) {
+                    console.log(e)
+                    alert('font loading failed ' + font);
+                  });
+            }
+
+            // IMAGE EDITING
+            $("#image-blur-<%= dimension[:id] %>").on('change', function(){
+                if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'image') {
+                    var filterExist = false;
+                    var object = canvas.getActiveObject();
+                    // CHECK IF FILTER EXISTS
+                    for (i = 0; i < object.filters.length; i++) {
+                        if (object.filters[i].hasOwnProperty('blur')) {
+                            filterExist = true;
+                        }
+                    }
+                    if (filterExist == true) {
+                        for (i = 0; i < object.filters.length; i++) {
+                            if (object.filters[i].hasOwnProperty('blur')) {
+                                object.filters[i]['blur'] = this.value;
+                                object.applyFilters();
+                                canvas.renderAll();
+                                modifiedHandler();
+                            }
+                        }
+                    } else {
+                        object.filters.push(new fabric.Image.filters.Blur({
+                            blur: this.value
+                        }));
+                        object.applyFilters();
+                        canvas.renderAll();
+                        modifiedHandler();   
+                    }
+                }
+            })
+
+            $("#image-brightness-<%= dimension[:id] %>").on('change', function(){
+                if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'image') {
+                    var filterExist = false;
+                    var object = canvas.getActiveObject();
+                    // CHECK IF FILTER EXISTS
+                    for (i = 0; i < object.filters.length; i++) {
+                        if (object.filters[i].hasOwnProperty('brightness')) {
+                            filterExist = true;
+                        }
+                    }
+                    if (filterExist == true) {
+                        for (i = 0; i < object.filters.length; i++) {
+                            if (object.filters[i].hasOwnProperty('brightness')) {
+                                object.filters[i]['brightness'] = this.value;
+                                object.applyFilters();
+                                canvas.renderAll();
+                                modifiedHandler();
+                            }
+                        }
+                    } else {
+                        object.filters.push(new fabric.Image.filters.Brightness({
+                            brightness: this.value
+                        }));
+                        object.applyFilters();
+                        canvas.renderAll();
+                        modifiedHandler();   
+                    }
+                }
+            })
+
+            $("#image-contrast-<%= dimension[:id] %>").on('change', function(){
+                if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'image') {
+                    var filterExist = false;
+                    var object = canvas.getActiveObject();
+                    // CHECK IF FILTER EXISTS
+                    for (i = 0; i < object.filters.length; i++) {
+                        if (object.filters[i].hasOwnProperty('contrast')) {
+                            filterExist = true;
+                        }
+                    }
+                    if (filterExist == true) {
+                        for (i = 0; i < object.filters.length; i++) {
+                            if (object.filters[i].hasOwnProperty('contrast')) {
+                                object.filters[i]['contrast'] = this.value;
+                                object.applyFilters();
+                                canvas.renderAll();
+                                modifiedHandler();
+                            }
+                        }
+                    } else {
+                        object.filters.push(new fabric.Image.filters.Contrast({
+                            contrast: this.value
+                        }));
+                        object.applyFilters();
+                        canvas.renderAll();
+                        modifiedHandler();   
+                    }
+                }
+            })
+
+            $("#image-saturation-<%= dimension[:id] %>").on('change', function(){
+                if (canvas.getActiveObject != null && canvas.getActiveObject().get('type') == 'image') {
+                    var filterExist = false;
+                    var object = canvas.getActiveObject();
+                    // CHECK IF FILTER EXISTS
+                    for (i = 0; i < object.filters.length; i++) {
+                        if (object.filters[i].hasOwnProperty('saturation')) {
+                            filterExist = true;
+                        }
+                    }
+                    if (filterExist == true) {
+                        for (i = 0; i < object.filters.length; i++) {
+                            if (object.filters[i].hasOwnProperty('saturation')) {
+                                object.filters[i]['saturation'] = this.value;
+                                object.applyFilters();
+                                canvas.renderAll();
+                                modifiedHandler();
+                            }
+                        }
+                    } else {
+                        object.filters.push(new fabric.Image.filters.Saturation({
+                            saturation: this.value
+                        }));
+                        object.applyFilters();
+                        canvas.renderAll();
+                        modifiedHandler();   
+                    }
+                }
+            })
+
+        });
+    });
+</script>
