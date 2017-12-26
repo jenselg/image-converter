@@ -173,7 +173,7 @@ class ImagesController < ApplicationController
       unless session[:id].nil?
         @current_session = Image.find_by(access_key: session[:id])
         unless @current_session.nil?
-          if Time.now > @current_session.created_at + 3.hours
+          if Time.now > @current_session.created_at + 1.hour
             session.delete(:id)
             @current_session = nil
           end
@@ -187,7 +187,7 @@ class ImagesController < ApplicationController
         if @image.access_key != session[:id]
           session.delete(:id)
           redirect_to root_path, notice: "Invalid session! Please select an image to edit and try again."
-        elsif Time.now > @image.created_at + 3.hours
+        elsif Time.now > @image.created_at + 1.hour
           session.delete(:id)
           redirect_to root_path, notice: "Session expired! Please select an image to edit."
         end
