@@ -147,6 +147,7 @@
       <br/>
       <script>
           $(document).ready(function(){
+            fabric.textureSize = 4096;
             imgElement = "<%= @image.data_url %>";
             screenRatio = window.devicePixelRatio;
           });

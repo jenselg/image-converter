@@ -88,7 +88,6 @@
     
 <script>
     $(document).ready(function(){
-        fabric.textureSize = 4096;
         $("#generate-<%= dimension[:id] %>").one('click', function(){
             var canvas = new fabric.Canvas("canvas-<%= dimension[:id] %>");
             canvas.setHeight(<%= dimension[:height] %>/("<%= dimension[:scale] %>"));
