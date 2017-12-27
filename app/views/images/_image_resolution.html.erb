@@ -17,17 +17,11 @@
             <p class="text-center" style="font-size: 12px;">
                 Drag text box to reposition, and use the box controls on the corners of the text box to resize/rotate.
             </p>
-            <div>
-                <select id="font-family-<%= dimension[:id] %>"></select>
-            </div>
-            <div>
-                <select id="font-align-<%= dimension[:id] %>"></select>
-            </div>
-            <br/>
-            <div>
+            <p>
+                <select id="font-family-<%= dimension[:id] %>" class="custom-select"></select>
+                <select id="font-align-<%= dimension[:id] %>" class="custom-select"></select>
                 <input type="text" id="text-color-<%= dimension[:id] %>" />
-            </div>
-            <br/>
+            </p>
             <div>
                 <a id="removetext-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Remove This Text</a>
             </div>
@@ -145,9 +139,7 @@
                     multiplier: (1/screenRatio)*("<%= dimension[:scale] %>")
                 });
                 var downloadButton = document.getElementById("download-<%= dimension[:id] %>");
-                downloadButton.addEventListener('click', function(e){
-                    downloadButton.href = dataURL;
-                });
+                downloadButton.href = dataURL;
             }
             var styleEditor = function (target) {
                 if (target != null) {
@@ -185,7 +177,7 @@
             var alignSelect = document.getElementById("font-align-<%= dimension[:id] %>");
             alignments.forEach(function(alignment){
                 var option = document.createElement('option');
-                option.innerHTML = "Align " + alignment;
+                option.innerHTML = "Align text " + alignment;
                 option.value = alignment;
                 alignSelect.appendChild(option);
             });
