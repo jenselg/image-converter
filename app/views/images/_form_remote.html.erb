@@ -1,22 +1,7 @@
-<%= form_with(model: image, local: true, multipart: true) do |form| %>
-  <% if image.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
-
-      <ul>
-      <% image.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :data %>
-    <%= form.text_field :data, id: :image_data %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= form_with(model: image, local: true) do |form| %>
+  <%= hidden_field_tag :remote, true %>
+  <%= hidden_field_tag  :image_url, "" %>
+<div class="form-group">
+  <%= form.submit "Edit This Image", class: 'btn btn-success btn-sm link-button' %>
+</div>
 <% end %>

@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'sidekiq'
 gem 'whenever', require: false
+gem 'unsplash'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

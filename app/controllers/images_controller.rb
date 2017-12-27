@@ -148,21 +148,40 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(image_params)
-    @new_access_key = SecureRandom.uuid
 
-    unless @image.data.nil?
+    if !params[:remote].nil? && !params[:image_url].nil? && !params[:remote] == true # GOT FROM A REMOTE SOURCE
+
+      @image = Image.new
+      @new_access_key = SecureRandom.uuid
+      @image.access_key = @new_access_key
+      @image_url = params[:image_url]
+      @temp_image = open(@image_url)
+      IO.copy_stream(@temp_mage, @image.data)
       if @image.save
-        @new_access_key = SecureRandom.uuid
-        @image.access_key = @new_access_key
         session[:id] = @new_access_key
-        @image.save
         redirect_to @image
       else
-        redirect_to root_path, notice: "Cannot proceed to next step. Please see guidelines for accepted images!"
+        redirect_to root_path, notice: "Error. Please try again!"
       end
-    else
-      redirect_to root_path, notice: "Error. Please try again!"
+
+    else # UPLOADED LOCALLY
+
+      @image = Image.new(image_params)
+      @new_access_key = SecureRandom.uuid
+      unless @image.data.nil?
+        if @image.save
+          @new_access_key = SecureRandom.uuid
+          @image.access_key = @new_access_key
+          session[:id] = @new_access_key
+          @image.save
+          redirect_to @image
+        else
+          redirect_to root_path, notice: "Cannot proceed to next step. Please see guidelines for accepted images!"
+        end
+      else
+        redirect_to root_path, notice: "Error. Please try again!"
+      end
+
     end
 
   end
@@ -198,7 +217,7 @@ class ImagesController < ApplicationController
 
     def image_params
       unless params[:image].nil?
-        params.require(:image).permit(:data)
+        params.require(:image).permit(:data, :image_url, :remote)
       end
     end
 

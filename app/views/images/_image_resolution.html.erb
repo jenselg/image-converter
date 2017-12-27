@@ -31,43 +31,52 @@
             <p class="text-center" style="font-size: 12px;">
                 Drag image to reposition, and use the box controls on the corners of the image to resize/rotate.
             </p>
-            <div>
-                <p style="margin-bottom: 0;">Blur</p><input id="image-blur-<%= dimension[:id] %>"
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value="0"
-                />
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <p style="margin-bottom: 0;">Blur</p><input id="image-blur-<%= dimension[:id] %>"
+                                    type="range"
+                                    min="0"
+                                    max="1"
+                                    step="0.01"
+                                    value="0"
+                                />
+                            </div>
+                            <div>
+                                <p style="margin-bottom: 0;">Brightness</p><input id="image-brightness-<%= dimension[:id] %>"
+                                    type="range"
+                                    min="-1"                    
+                                    max="1"                  
+                                    step="0.01"
+                                    value="0"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <p style="margin-bottom: 0;">Contrast</p><input id="image-contrast-<%= dimension[:id] %>"
+                                    type="range"
+                                    min="-1"                    
+                                    max="1"                  
+                                    step="0.01"
+                                    value="0"
+                                />
+                            </div>
+                            <div>
+                                <p style="margin-bottom: 0;">Saturation</p><input id="image-saturation-<%= dimension[:id] %>"
+                                    type="range"
+                                    min="-1"                    
+                                    max="1"                  
+                                    step="0.01"
+                                    value="0"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p style="margin-bottom: 0;">Brightness</p><input id="image-brightness-<%= dimension[:id] %>"
-                    type="range"
-                    min="-1"                    
-                    max="1"                  
-                    step="0.01"
-                    value="0"
-                />
-            </div>
-            <div>
-                <p style="margin-bottom: 0;">Contrast</p><input id="image-contrast-<%= dimension[:id] %>"
-                    type="range"
-                    min="-1"                    
-                    max="1"                  
-                    step="0.01"
-                    value="0"
-                />
-            </div>
-            <div>
-                <p style="margin-bottom: 0;">Saturation</p><input id="image-saturation-<%= dimension[:id] %>"
-                    type="range"
-                    min="-1"                    
-                    max="1"                  
-                    step="0.01"
-                    value="0"
-                />
-            </div>
-
         </div>
         <br/>
         <!-- BUTTONS AND CONTROLS -->
