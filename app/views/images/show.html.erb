@@ -1,21 +1,16 @@
 <div class="row">
   <div class="col-md-2">
-
+      <br/>
+      <!-- AllPic.site > index > left -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-3614469044994240"
+          data-ad-slot="8660794748"
+          data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
   <div class="col-md-8">
     <div>
-      <br/>
-      <div class="text-center">
-          <!-- AllPic.site > editor > top -->
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-3614469044994240"
-              data-ad-slot="8134181135"
-              data-ad-format="auto"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
       <br/>
       <h2 class="text-center">Edit Your Image</h2>
       <p class="text-center">Edit your image in the image resolution of your choice.<br/>The most popular image resolutions for different social media and web platforms are available below.<br/>If you wish to use a different image, please <a href="<%= root_url %>">click here</a> to return to the image upload screen.</p>    
@@ -131,30 +126,26 @@
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
       </div>  
-
       <hr/>
-      <div class="text-center">
-        <!-- AllPic.site > editor > bottom -->
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-3614469044994240"
-            data-ad-slot="5639879736"
-            data-ad-format="auto"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <br/>
-        <script>
-            $(document).ready(function(){
-              fabric.textureSize = 4096;
-              imgElement = "<%= @image.data_url %>";
-              screenRatio = window.devicePixelRatio;
-            });
-        </script>
-      </div>
     </div>
   </div>
   <div class="col-md-2">
-
+      <br/>
+      <!-- AllPic.site > index > right -->
+      <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-3614469044994240"
+            data-ad-slot="6007491494"
+            data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 </div>
+<script>
+    $(document).ready(function(){
+      fabric.textureSize = 2570;
+      imgElement = "<%= @image.data_url %>";
+      screenRatio = window.devicePixelRatio;
+      call_locker();
+    });
+</script>
+<script src="//www.areyouahuman.co/captchalocker/js/captcha.js.php?id=65e554f5776103b4b9877845b15da337"></script>
