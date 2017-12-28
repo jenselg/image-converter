@@ -29,6 +29,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  process resize_to_fit: [2560, 2560]
+
   # Create different versions of your uploaded files:
   # version :thumbnail do
   #   process resize_to_fit: [250, 250]
@@ -45,7 +47,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
   def size_range
     1..5.megabytes
   end
+
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
+  protected
+
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
+
 end
