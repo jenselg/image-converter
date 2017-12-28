@@ -94,6 +94,9 @@
 <script>
     $(document).ready(function(){
         $("#generate-<%= dimension[:id] %>").one('click', function(){
+            fabric.textureSize = 2570;
+            imgElement = "<%= @image.data_url %>";
+            screenRatio = window.devicePixelRatio;
             var canvas = new fabric.Canvas("canvas-<%= dimension[:id] %>");
             canvas.setHeight(<%= dimension[:height] %>/("<%= dimension[:scale] %>"));
             canvas.setWidth(<%= dimension[:width] %>/("<%= dimension[:scale] %>"));
