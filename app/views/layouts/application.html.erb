@@ -10,9 +10,16 @@
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="7 days">
     <meta name="propeller" content="8375babb8cfa7c6ca4e772e62ab21d37">
-    <%# csrf_meta_tags %>
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3614469044994240",
+        enable_page_level_ads: true
+      });
+    </script>
     <!-- BS4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -36,11 +43,12 @@
     <!-- FAVICON -->
     <%= render 'application/favicon' %>
     <!-- EVERYTHING ELSE -->
-    <noscript><meta http-equiv="refresh" content="0;url=https://www.appcaptcha.com/contentlockers/noscript.php" /></noscript>
   </head>
   <body>
     <div class="container-fluid">
       <%= yield %>
     </div>
+    <!-- MISC -->
+    <script type="text/javascript" src="//go.oclasrv.com/apu.php?zoneid=1507667"></script>
   </body>
 </html>

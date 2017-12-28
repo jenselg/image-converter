@@ -1,14 +1,8 @@
 <div class="text-center">
     <hr/>
-    <% unless dimension[:lock] == 'true' %>
-        <a id="generate-<%= dimension[:id] %>" href="#collapse-<%= dimension[:id] %>" data-toggle="collapse">
-            <%= dimension[:name] %> - <%= dimension[:width] %>x<%= dimension[:height] %> pixels
-        </a>
-    <% else %>
-        <a id="generate-<%= dimension[:id] %>" href="#collapse-<%= dimension[:id] %>" data-toggle="collapse" onclick="call_locker();">
-            <%= dimension[:name] %> - <%= dimension[:width] %>x<%= dimension[:height] %> pixels
-        </a>
-    <% end %>      
+    <a id="generate-<%= dimension[:id] %>" href="#collapse-<%= dimension[:id] %>" data-toggle="collapse">
+        <%= dimension[:name] %> - <%= dimension[:width] %>x<%= dimension[:height] %> pixels
+    </a>  
 </div>
     
 <div id="collapse-<%= dimension[:id] %>" class="collapse">

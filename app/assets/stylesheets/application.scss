@@ -15,6 +15,12 @@
  */
  @import url('https://fonts.googleapis.com/css?family=Bungee|Dancing+Script|Great+Vibes|Indie+Flower|Lobster|Monoton|Open+Sans+Condensed:300|Pacifico|Pangolin|Poiret+One|Raleway|Risque|Roboto+Condensed|Shadows+Into+Light|Shrikhand|Special+Elite|Teko|Ultra');
 
+ @media only screen and (max-width : 768px) {
+        .unmobile {
+            display: none;
+        }
+    }
+
 body {
     background: asset_url('debut_light.png');
 }
