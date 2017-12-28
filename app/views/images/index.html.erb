@@ -8,7 +8,7 @@
         data-ad-format="auto"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
-  <div class="col-md-8 text-center">
+  <div class="col-md-8 text-center" style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);">
     <br/>
     <h1>AllPic.site</h1>
     <p style="margin-bottom: 0; font-weight: bold;">Easily edit and generate images in different pixel sizes.</p>
@@ -42,6 +42,7 @@
     <% unless @current_session.nil? %>
       <%= link_to 'Click here to return to your current session', image_path(@current_session) %>
     <% end %>
+    <hr/>
     <p style="font-size: 11px;">Selecting an image and proceeding to the next step will clear any sessions you have and start a new session.<br/>Sessions lasts 1 hour and will expire thereafter.</p>
     <hr/>
     <p style="font-size: 11px;">Copyright © <%= Date.today.year %> AllPic.site. All rights reserved. All other registered trademarks or trademarks are property of their respective owners.</p>    
