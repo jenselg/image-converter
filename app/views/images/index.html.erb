@@ -29,17 +29,19 @@
         <i class="fa fa-globe" aria-hidden="true"></i>&nbsp;Web Banners&nbsp;
         <i class="fa fa-print" aria-hidden="true"></i>&nbsp;Print Media
     </p>
-    <span style="color: red;font-size: 12px;"><%= !flash[:notice].nil? ? flash[:notice] : "" %></span><br/>
+    <div>
+      <%= render 'form_local', image: @image %>
+    </div>
+    <% if !flash[:notice].nil? %>
+      <p style="color: red;font-size: 12px;"><%= flash[:notice] %></p>
+    <% end %>
     <ul style="list-style-type: none; padding:0; margin-bottom:16px; font-size: 12px;">
       <li><strong>Filetypes allowed:</strong> jpg, jpeg, gif, png</li>
       <li><strong>Maximum filesize allowed:</strong> 5 MB</li>
     </ul>
-    <div>
-      <%= render 'form_local', image: @image %>
-    </div>
     <% unless @current_session.nil? %>
-    <%= link_to 'Click here to return to your current session', image_path(@current_session) %>
-  <% end %>
+      <%= link_to 'Click here to return to your current session', image_path(@current_session) %>
+    <% end %>
     <p style="font-size: 11px;">Selecting an image and proceeding to the next step will clear any sessions you have and start a new session.<br/>Sessions lasts 1 hour and will expire thereafter.</p>
     <hr/>
     <p style="font-size: 11px;">Copyright © <%= Date.today.year %> AllPic.site. All rights reserved. All other registered trademarks or trademarks are property of their respective owners.</p>    
