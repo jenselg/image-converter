@@ -15,21 +15,40 @@
         <div id="text-editor-<%= dimension[:id] %>" class="text-center">
             <p style="font-size: 24px;">Text Adjustments</p>
             <p class="text-center" style="font-size: 12px;">
-                Drag text box to reposition, and use the box controls on the corners of the text box to resize/rotate.
+                <strong>Reposition Text Box:</strong> Click text box anywhere and drag<br/>
+                <strong>Resizing/Decrease/Increase Font Size:</strong> Click any of the 4 corner box controls and drag<br/>
+                <strong>Increase/Decrease Word Break:</strong> Use left or right midpoint box controls and drag<br/>
+                <strong>Increase/Decrease Vertical Stretch:</strong> Use top or bottom midpoint box controls and drag<br/>
+                <strong>Rotate Text Box:</strong> Use the tailed box control on the middle top and drag left/right<br/>
             </p>
-            <p>
-                <select id="font-family-<%= dimension[:id] %>" class="custom-select"></select>
-                <select id="font-align-<%= dimension[:id] %>" class="custom-select"></select>
-                <input type="text" id="text-color-<%= dimension[:id] %>" />
-            </p>
-            <div>
-                <a id="removetext-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Remove This Text</a>
+            <div class="row">
+                    <div class="col-md-12">
+                    <a id="removetext-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Remove Selected Text Box</a>
+                    </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="row">
+                        <div class="col-md-4" style="padding-bottom: 10px;">
+                                Text Font<br/><select id="font-family-<%= dimension[:id] %>" class="custom-select"></select>
+                        </div>
+                        <div class="col-md-4" style="padding-bottom: 10px;">
+                                Text Alignment<br/><select id="font-align-<%= dimension[:id] %>" class="custom-select"></select>
+                        </div>
+                        <div class="col-md-4" style="padding-bottom: 10px;">
+                                Text Color<br/><input type="text" id="text-color-<%= dimension[:id] %>" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="image-editor-<%= dimension[:id] %>" class="text-center">
             <p style="font-size: 24px;">Image Adjustments</p>
             <p class="text-center" style="font-size: 12px;">
-                Drag image to reposition, and use the box controls on the corners of the image to resize/rotate.
+                <strong>Resize Image:</strong> Use any corner box control and drag<br/>
+                <strong>Stretch Image:</strong> Use any midpoint box control and drag<br/>
+                <strong>Rotate Image:</strong> Use the tailed box control on the middle top and drag left/right<br/>
             </p>
             <div class="row">
                 <div class="col-md-6 offset-md-3">
@@ -81,7 +100,7 @@
         <br/>
         <!-- BUTTONS AND CONTROLS -->
         <div id="static-buttons">
-            <a id="addtext-<%= dimension[:id] %>" class="btn btn-primary btn-sm link-button">Add Text</a>
+            <a id="addtext-<%= dimension[:id] %>" class="btn btn-primary btn-sm link-button">Add Text Box</a>
             <a id="revert-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Reset Image</a>
         </div>
         <br/>
@@ -92,7 +111,7 @@
 </div>
     
 <script>
-    $(document).ready(function(){
+
         $("#generate-<%= dimension[:id] %>").one('click', function(){
             fabric.textureSize = 2570;
             imgElement = "<%= @image.data_url %>";
@@ -365,5 +384,5 @@
             })
 
         });
-    });
+
 </script>

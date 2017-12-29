@@ -20,9 +20,9 @@
             display: none;
         }
     }
-
+/* Background pattern from Subtle Patterns */
 body {
-    background: asset_url('debut_light.png');
+    background: asset_url('doodles.png');
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -39,7 +39,6 @@ p, a {
 
 .link-button, .link-button:hover {
     color: white !important;
-    border-radius: 0 !important;
 }
 
 .header-button {
