@@ -7,90 +7,91 @@
     
 <div id="collapse-<%= dimension[:id] %>" class="collapse">
     <div class="text-center">
-        <!-- IMAGE -->
         <br/>
         <canvas id="canvas-<%= dimension[:id] %>" style="border: 4px dashed silver;">
         </canvas>
         <br/>
-        <div id="text-editor-<%= dimension[:id] %>" class="text-center">
-            <p style="font-size: 24px;">Text Adjustments</p>
-            <p class="text-center" style="font-size: 12px;">
-                <strong>Reposition Text Box:</strong> Click text box anywhere and drag<br/>
-                <strong>Resizing/Decrease/Increase Font Size:</strong> Click any of the 4 corner box controls and drag<br/>
-                <strong>Increase/Decrease Word Break:</strong> Use left or right midpoint box controls and drag<br/>
-                <strong>Increase/Decrease Vertical Stretch:</strong> Use top or bottom midpoint box controls and drag<br/>
-                <strong>Rotate Text Box:</strong> Use the tailed box control on the middle top and drag left/right<br/>
-            </p>
-            <div class="row">
-                    <div class="col-md-12">
-                    <a id="removetext-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Remove Selected Text Box</a>
-                    </div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div class="row">
-                        <div class="col-md-4" style="padding-bottom: 10px;">
-                                Text Font<br/><select id="font-family-<%= dimension[:id] %>" class="custom-select"></select>
+        <div id="editor-controls-<%= dimension[:id] %>" style="display: none;">
+            <div id="text-editor-<%= dimension[:id] %>" class="text-center">
+                <p style="font-size: 24px;">Text Adjustments</p>
+                <p class="text-center" style="font-size: 12px;">
+                    <strong>Reposition Text Box:</strong> Click text box anywhere and drag<br/>
+                    <strong>Resizing/Decrease/Increase Font Size:</strong> Click any of the 4 corner box controls and drag<br/>
+                    <strong>Increase/Decrease Word Break:</strong> Use left or right midpoint box controls and drag<br/>
+                    <strong>Increase/Decrease Vertical Stretch:</strong> Use top or bottom midpoint box controls and drag<br/>
+                    <strong>Rotate Text Box:</strong> Use the tailed box control on the middle top and drag left/right<br/>
+                </p>
+                <div class="row">
+                        <div class="col-md-12">
+                        <a id="removetext-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Remove Selected Text Box</a>
                         </div>
-                        <div class="col-md-4" style="padding-bottom: 10px;">
-                                Text Alignment<br/><select id="font-align-<%= dimension[:id] %>" class="custom-select"></select>
-                        </div>
-                        <div class="col-md-4" style="padding-bottom: 10px;">
-                                Text Color<br/><input type="text" id="text-color-<%= dimension[:id] %>" />
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-bottom: 10px;">
+                                    Text Font<br/><select id="font-family-<%= dimension[:id] %>" class="custom-select"></select>
+                            </div>
+                            <div class="col-md-4" style="padding-bottom: 10px;">
+                                    Text Alignment<br/><select id="font-align-<%= dimension[:id] %>" class="custom-select"></select>
+                            </div>
+                            <div class="col-md-4" style="padding-bottom: 10px;">
+                                    Text Color<br/><input type="text" id="text-color-<%= dimension[:id] %>" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="image-editor-<%= dimension[:id] %>" class="text-center">
-            <p style="font-size: 24px;">Image Adjustments</p>
-            <p class="text-center" style="font-size: 12px;">
-                <strong>Resize Image:</strong> Use any corner box control and drag<br/>
-                <strong>Stretch Image:</strong> Use any midpoint box control and drag<br/>
-                <strong>Rotate Image:</strong> Use the tailed box control on the middle top and drag left/right<br/>
-            </p>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div>
-                                <p style="margin-bottom: 0;">Blur</p><input id="image-blur-<%= dimension[:id] %>"
-                                    type="range"
-                                    min="0"
-                                    max="1"
-                                    step="0.01"
-                                    value="0"
-                                />
+            <div id="image-editor-<%= dimension[:id] %>" class="text-center">
+                <p style="font-size: 24px;">Image Adjustments</p>
+                <p class="text-center" style="font-size: 12px;">
+                    <strong>Resize Image:</strong> Use any corner box control and drag<br/>
+                    <strong>Stretch Image:</strong> Use any midpoint box control and drag<br/>
+                    <strong>Rotate Image:</strong> Use the tailed box control on the middle top and drag left/right<br/>
+                </p>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div>
+                                    <p style="margin-bottom: 0;">Blur</p><input id="image-blur-<%= dimension[:id] %>"
+                                        type="range"
+                                        min="0"
+                                        max="1"
+                                        step="0.01"
+                                        value="0"
+                                    />
+                                </div>
+                                <div>
+                                    <p style="margin-bottom: 0;">Brightness</p><input id="image-brightness-<%= dimension[:id] %>"
+                                        type="range"
+                                        min="-1"                    
+                                        max="1"                  
+                                        step="0.01"
+                                        value="0"
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <p style="margin-bottom: 0;">Brightness</p><input id="image-brightness-<%= dimension[:id] %>"
-                                    type="range"
-                                    min="-1"                    
-                                    max="1"                  
-                                    step="0.01"
-                                    value="0"
-                                />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div>
-                                <p style="margin-bottom: 0;">Contrast</p><input id="image-contrast-<%= dimension[:id] %>"
-                                    type="range"
-                                    min="-1"                    
-                                    max="1"                  
-                                    step="0.01"
-                                    value="0"
-                                />
-                            </div>
-                            <div>
-                                <p style="margin-bottom: 0;">Saturation</p><input id="image-saturation-<%= dimension[:id] %>"
-                                    type="range"
-                                    min="-1"                    
-                                    max="1"                  
-                                    step="0.01"
-                                    value="0"
-                                />
+                            <div class="col-md-6">
+                                <div>
+                                    <p style="margin-bottom: 0;">Contrast</p><input id="image-contrast-<%= dimension[:id] %>"
+                                        type="range"
+                                        min="-1"                    
+                                        max="1"                  
+                                        step="0.01"
+                                        value="0"
+                                    />
+                                </div>
+                                <div>
+                                    <p style="margin-bottom: 0;">Saturation</p><input id="image-saturation-<%= dimension[:id] %>"
+                                        type="range"
+                                        min="-1"                    
+                                        max="1"                  
+                                        step="0.01"
+                                        value="0"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,7 +99,6 @@
             </div>
         </div>
         <br/>
-        <!-- BUTTONS AND CONTROLS -->
         <div id="static-buttons">
             <a id="addtext-<%= dimension[:id] %>" class="btn btn-primary btn-sm link-button">Add Text Box</a>
             <a id="revert-<%= dimension[:id] %>" class="btn btn-danger btn-sm link-button">Reset Image</a>
@@ -113,11 +113,18 @@
 <script>
 
         $("#generate-<%= dimension[:id] %>").one('click', function(){
+
+
             var canvas = new fabric.Canvas("canvas-<%= dimension[:id] %>");
             canvas.setHeight(<%= dimension[:height] %>/("<%= dimension[:scale] %>"));
             canvas.setWidth(<%= dimension[:width] %>/("<%= dimension[:scale] %>"));
             canvas.preserveObjectStacking = true;
             canvas.backgroundColor = 'white';
+
+            $(document).ready(function(){
+                $("#editor-controls-<%= dimension[:id] %>").show();
+            });
+
             new fabric.Image.fromURL(imgElement, function(imgData){
                 imgData.set('top', 0);
                 imgData.set('left', 0);
