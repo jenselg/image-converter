@@ -121,10 +121,6 @@
             canvas.preserveObjectStacking = true;
             canvas.backgroundColor = 'white';
 
-            $(document).ready(function(){
-                $("#editor-controls-<%= dimension[:id] %>").show();
-            });
-
             new fabric.Image.fromURL(imgElement, function(imgData){
                 imgData.set('top', 0);
                 imgData.set('left', 0);
@@ -173,6 +169,7 @@
                 canvas.add(textbox<%= dimension[:id] %>).setActiveObject(textbox<%= dimension[:id] %>);
             });
             var modifiedHandler = function (evt) {
+                $("#editor-controls-<%= dimension[:id] %>").show();
                 var dataURL = canvas.toDataURL({
                     multiplier: (1/screenRatio)*("<%= dimension[:scale] %>")
                 });
