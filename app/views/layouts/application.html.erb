@@ -49,9 +49,9 @@
 
   </head>
   <body>
-    <div class="container-fluid" style="padding-top: 10px;">
+    <div class="container-fluid">
       <%= yield %>
+      <%= render partial: 'layouts/footer' %>
     </div>
-    <%= render partial: 'layouts/footer' %>
   </body>
 </html>
