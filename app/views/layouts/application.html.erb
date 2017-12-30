@@ -30,6 +30,8 @@
     <!-- SPECTRUM -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+    <!-- MASONRY -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <!-- ADSENSE -->
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -50,5 +52,6 @@
     <div class="container-fluid" style="padding-top: 10px;">
       <%= yield %>
     </div>
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>

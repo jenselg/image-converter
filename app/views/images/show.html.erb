@@ -4,20 +4,8 @@
   screenRatio = window.devicePixelRatio;
 </script>
 <script src="//go.mobtrks.com/notice.php?p=1507876&interstitial=1"></script>
-<script type="text/javascript" src="//go.oclasrv.com/apu.php?zoneid=1507667"></script>
 <div class="row">
-  <div class="col-md-2" style="padding:10px;">
-    <!-- AllPic.site > editor > left -->
-    <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-3614469044994240"
-          data-ad-slot="6917689421"
-          data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-  <div class="col-md-8" style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); border-radius: 4px;">
+  <div class="col-md-8 offset-md-2" style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); border-radius: 4px;">
     <div>
       <br/>
       <h2 class="text-center">Edit Your Image</h2>
@@ -31,6 +19,8 @@
         <% end %>
       </div>
 
+      <%= render partial: 'native_ad' %>
+
       <hr/>
       <p href="#twitter-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;&nbsp;Twitter</p>
       <div id="twitter-collapse" class="collapse">
@@ -38,6 +28,8 @@
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
       </div>
+
+      <%= render partial: 'native_ad' %>
 
       <hr/>
       <p href="#google-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-google-plus-official" aria-hidden="true"></i>&nbsp;&nbsp;Google+</p>
@@ -47,6 +39,8 @@
         <% end %>
       </div>
 
+      <%= render partial: 'native_ad' %>
+
       <hr/>
       <p href="#instagram-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;&nbsp;Instagram</p>
       <div id="instagram-collapse" class="collapse">
@@ -54,6 +48,8 @@
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
       </div>
+
+      <%= render partial: 'native_ad' %>
 
       <hr/>
       <p href="#pinterest-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;&nbsp;Pinterest</p>
@@ -63,6 +59,8 @@
         <% end %>
       </div>
 
+      <%= render partial: 'native_ad' %>
+
       <hr/>
       <p href="#linkedin-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-linkedin" aria-hidden="true"></i>&nbsp;&nbsp;LinkedIn</p>
       <div id="linkedin-collapse" class="collapse">
@@ -70,6 +68,8 @@
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
       </div>
+
+      <%= render partial: 'native_ad' %>
 
       <hr/>
       <p href="#youtube-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;YouTube</p>
@@ -79,6 +79,8 @@
         <% end %>
       </div>
 
+      <%= render partial: 'native_ad' %>
+
       <hr/>
       <p href="#snapchat-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i>&nbsp;&nbsp;Snapchat</p>
       <div id="snapchat-collapse" class="collapse">
@@ -86,6 +88,8 @@
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
       </div>
+
+      <%= render partial: 'native_ad' %>
 
       <hr/>
       <p href="#twitch-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-twitch" aria-hidden="true"></i>&nbsp;&nbsp;Twitch</p>
@@ -95,6 +99,8 @@
         <% end %>
       </div>
       
+      <%= render partial: 'native_ad' %>
+
       <hr/>
       <p href="#tumblr-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-tumblr" aria-hidden="true"></i>&nbsp;&nbsp;Tumblr</p>
       <div id="tumblr-collapse" class="collapse">
@@ -102,6 +108,8 @@
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
       </div>
+
+      <%= render partial: 'native_ad' %>
 
       <hr/>
       <p href="#vk-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-vk" aria-hidden="true"></i>&nbsp;&nbsp;VK (Vkontakte)</p>
@@ -111,6 +119,8 @@
         <% end %>
       </div>
 
+      <%= render partial: 'native_ad' %>
+
       <hr/>
       <p href="#ok-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-odnoklassniki" aria-hidden="true"></i>&nbsp;&nbsp;OK (Odnoklassniki)</p>
       <div id="ok-collapse" class="collapse">
@@ -118,6 +128,8 @@
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
       </div>
+
+      <%= render partial: 'native_ad' %>
 
       <hr/>
       <p href="#webbanners-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Web Banners</p>
@@ -127,25 +139,19 @@
         <% end %>
       </div>
 
+      <%= render partial: 'native_ad' %>
+
       <hr/>
       <p href="#printmedia-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;Print Media</p>
       <div id="printmedia-collapse" class="collapse">
         <% @print_media.each do |dimension| %>
           <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
         <% end %>
-      </div>  
-      <hr/>
+      </div>
+
+      <%= render partial: 'native_ad' %>     
+
+      <br/>  
     </div>
-  </div>
-  <div class="col-md-2" style="padding:10px;">
-      <!-- AllPic.site > editor > right -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-3614469044994240"
-           data-ad-slot="5959830974"
-           data-ad-format="auto"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
   </div>
 </div>

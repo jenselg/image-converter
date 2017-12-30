@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'sidekiq'
 gem 'whenever', require: false
 gem 'unsplash'
+gem 'pixabay-api', require: 'pixabay'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

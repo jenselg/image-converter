@@ -1,9 +1,14 @@
 class ImagesController < ApplicationController
+
+  require 'pixabay'
+
   before_action :set_image, only: [:show]
   before_action :set_session, only: [:index]
 
   def index
     @image = Image.new
+    pixabay_instance = Pixabay.new
+    @pixabay_images = pixabay_instance.photos(safesearch: true, per_page: 30, image_type: 'photo', orientation: 'horizontal', order: 'latest')['hits']
   end
 
   def show
