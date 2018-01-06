@@ -3,142 +3,136 @@
   imgElement = "<%= @image.data_url %>";
   screenRatio = window.devicePixelRatio;
 </script>
+
+<h2 class="text-center">Edit Your Image</h2>
+<p class="text-center">Edit your image in the image resolution of your choice.<br/>If you wish to use a different image, please <a href="<%= images_url %>">click here</a> to return to the image upload screen.</p>    
+<p class="text-center">Click on an option below to view available image resolutions.<br/>Click on the image resolution to view, edit, and download the image.</p>
+
 <div class="row">
-  <div class="col-md-8 offset-md-2" style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); border-radius: 4px;">
-    <div>
-      <br/>
-      <h2 class="text-center">Edit Your Image</h2>
-      <p class="text-center">Edit your image in the image resolution of your choice.<br/>If you wish to use a different image, please <a href="<%= root_url %>">click here</a> to return to the image upload screen.</p>    
-      <p class="text-center">Click on an option below to view available image resolutions.<br/>Click on the image resolution to view, edit, and download the image.</p>
-
-      <div class="row">
-        <div class="col-md-12">
-            <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-format="fluid"
-            data-ad-layout-key="-8t+1w-dz+e9+h3"
-            data-ad-client="ca-pub-3614469044994240"
-            data-ad-slot="3669984646"></ins>
-            <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-      </div>
-      
-      <hr/>
-      <p href="#facebook-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;&nbsp;Facebook</p>
-      <div id="facebook-collapse" class="collapse">
-        <% @facebook.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#twitter-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;&nbsp;Twitter</p>
-      <div id="twitter-collapse" class="collapse">
-        <% @twitter.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#google-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-google-plus-official" aria-hidden="true"></i>&nbsp;&nbsp;Google+</p>
-      <div id="google-collapse" class="collapse">
-        <% @google.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#instagram-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;&nbsp;Instagram</p>
-      <div id="instagram-collapse" class="collapse">
-        <% @instagram.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-
-      <hr/>
-      <p href="#pinterest-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;&nbsp;Pinterest</p>
-      <div id="pinterest-collapse" class="collapse">
-        <% @pinterest.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#linkedin-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-linkedin" aria-hidden="true"></i>&nbsp;&nbsp;LinkedIn</p>
-      <div id="linkedin-collapse" class="collapse">
-        <% @linkedin.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#youtube-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;YouTube</p>
-      <div id="youtube-collapse" class="collapse">
-        <% @youtube.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#snapchat-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i>&nbsp;&nbsp;Snapchat</p>
-      <div id="snapchat-collapse" class="collapse">
-        <% @snapchat.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#twitch-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-twitch" aria-hidden="true"></i>&nbsp;&nbsp;Twitch</p>
-      <div id="twitch-collapse" class="collapse">
-        <% @twitch.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-      
-      <hr/>
-      <p href="#tumblr-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-tumblr" aria-hidden="true"></i>&nbsp;&nbsp;Tumblr</p>
-      <div id="tumblr-collapse" class="collapse">
-        <% @tumblr.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#vk-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-vk" aria-hidden="true"></i>&nbsp;&nbsp;VK (Vkontakte)</p>
-      <div id="vk-collapse" class="collapse">
-        <% @vk.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#ok-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-odnoklassniki" aria-hidden="true"></i>&nbsp;&nbsp;OK (Odnoklassniki)</p>
-      <div id="ok-collapse" class="collapse">
-        <% @ok.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#webbanners-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Web Banners</p>
-      <div id="webbanners-collapse" class="collapse">
-        <% @web_banners.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <hr/>
-      <p href="#printmedia-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;Print Media</p>
-      <div id="printmedia-collapse" class="collapse">
-        <% @print_media.each do |dimension| %>
-          <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
-        <% end %>
-      </div>
-
-      <br/>  
-    </div>
+  <div class="col-md-12">
+      <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-8t+1w-dz+e9+h3"
+      data-ad-client="ca-pub-3614469044994240"
+      data-ad-slot="3669984646"></ins>
+      <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
   </div>
 </div>
+
+<hr/>
+<p href="#facebook-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;&nbsp;Facebook</p>
+<div id="facebook-collapse" class="collapse">
+  <% @facebook.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#twitter-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;&nbsp;Twitter</p>
+<div id="twitter-collapse" class="collapse">
+  <% @twitter.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#google-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-google-plus-official" aria-hidden="true"></i>&nbsp;&nbsp;Google+</p>
+<div id="google-collapse" class="collapse">
+  <% @google.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#instagram-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;&nbsp;Instagram</p>
+<div id="instagram-collapse" class="collapse">
+  <% @instagram.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+
+<hr/>
+<p href="#pinterest-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;&nbsp;Pinterest</p>
+<div id="pinterest-collapse" class="collapse">
+  <% @pinterest.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#linkedin-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-linkedin" aria-hidden="true"></i>&nbsp;&nbsp;LinkedIn</p>
+<div id="linkedin-collapse" class="collapse">
+  <% @linkedin.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#youtube-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;YouTube</p>
+<div id="youtube-collapse" class="collapse">
+  <% @youtube.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#snapchat-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i>&nbsp;&nbsp;Snapchat</p>
+<div id="snapchat-collapse" class="collapse">
+  <% @snapchat.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#twitch-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-twitch" aria-hidden="true"></i>&nbsp;&nbsp;Twitch</p>
+<div id="twitch-collapse" class="collapse">
+  <% @twitch.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#tumblr-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-tumblr" aria-hidden="true"></i>&nbsp;&nbsp;Tumblr</p>
+<div id="tumblr-collapse" class="collapse">
+  <% @tumblr.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#vk-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-vk" aria-hidden="true"></i>&nbsp;&nbsp;VK (Vkontakte)</p>
+<div id="vk-collapse" class="collapse">
+  <% @vk.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#ok-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-odnoklassniki" aria-hidden="true"></i>&nbsp;&nbsp;OK (Odnoklassniki)</p>
+<div id="ok-collapse" class="collapse">
+  <% @ok.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#webbanners-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Web Banners</p>
+<div id="webbanners-collapse" class="collapse">
+  <% @web_banners.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+<hr/>
+<p href="#printmedia-collapse" data-toggle="collapse" class="text-center header-button marginless"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;Print Media</p>
+<div id="printmedia-collapse" class="collapse">
+  <% @print_media.each do |dimension| %>
+    <%= render partial: 'image_resolution', locals: { dimension: dimension } %>
+  <% end %>
+</div>
+
+

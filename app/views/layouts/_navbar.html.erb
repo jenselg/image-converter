@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="<%= root_url %>" style="font-family: 'Pacifico', cursive !important;">AllPic</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <%= link_to 'Quick Image Editor', images_path, class: 'nav-item nav-link' %>
+        <%= link_to 'Image Filetype Converter', convert_images_path, class: 'nav-item nav-link' %>
+        <a class="nav-item nav-link" href="#">Fake Information Generator</a>
+        <a class="nav-item nav-link" href="#">Long-Tail Keyword Generator</a>
+        <a class="nav-item nav-link" href="#">Article Rewriter</a>
+        <a class="nav-item nav-link" href="#">Blog</a>
+      </div>
+    </div>
+</nav>

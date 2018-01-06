@@ -1,14 +1,10 @@
 class ImagesController < ApplicationController
 
-  require 'pixabay'
-
   before_action :set_image, only: [:show]
   before_action :set_session, only: [:index]
 
   def index
     @image = Image.new
-    pixabay_instance = Pixabay.new
-    @pixabay_images = pixabay_instance.photos(safesearch: true, per_page: 30, image_type: 'photo', orientation: 'horizontal', order: 'latest')['hits']
   end
 
   def show
@@ -153,24 +149,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-
-    if !params[:remote].nil? && !params[:image_url].nil? && !params[:remote] == true # GOT FROM A REMOTE SOURCE
-
-      @image = Image.new
-      @new_access_key = SecureRandom.uuid
-      @image.access_key = @new_access_key
-      @image_url = params[:image_url]
-      @temp_image = open(@image_url)
-      IO.copy_stream(@temp_mage, @image.data)
-      if @image.save
-        session[:id] = @new_access_key
-        redirect_to @image
-      else
-        redirect_to root_path, notice: "Error. Please try again!"
-      end
-
-    else # UPLOADED LOCALLY
-
       @image = Image.new(image_params)
       @new_access_key = SecureRandom.uuid
       unless @image.data.nil?
@@ -181,14 +159,11 @@ class ImagesController < ApplicationController
           @image.save
           redirect_to @image
         else
-          redirect_to root_path, notice: "Cannot proceed to next step. Please see guidelines for accepted images!"
+          redirect_to images_path, notice: "Filetypes allowed: jpg, jpeg, gif, png. Maximum filesize allowed: 5 MB."
         end
       else
-        redirect_to root_path, notice: "Error. Please try again!"
+        redirect_to images_path, notice: "Error. Please try again!"
       end
-
-    end
-
   end
 
   private
@@ -210,19 +185,19 @@ class ImagesController < ApplicationController
         @image = Image.find(params[:id])
         if @image.access_key != session[:id]
           session.delete(:id)
-          redirect_to root_path, notice: "Invalid session! Please select an image to edit and try again."
+          redirect_to images_path, notice: "Invalid session! Please select an image to edit and try again."
         elsif Time.now > @image.created_at + 1.hour
           session.delete(:id)
-          redirect_to root_path, notice: "Session expired! Please select an image to edit."
+          redirect_to images_path, notice: "Session expired! Please select an image to edit."
         end
       else
-        redirect_to root_path # THIS IS AN INVALID REQUEST, MOSTLY MALFORMED OR EXPIRED LINK GET DUE TO WEB CACHE OF USER
+        redirect_to images_path # THIS IS AN INVALID REQUEST, MOSTLY MALFORMED OR EXPIRED LINK GET DUE TO WEB CACHE OF USER
       end
     end
 
     def image_params
       unless params[:image].nil?
-        params.require(:image).permit(:data, :image_url, :remote)
+        params.require(:image).permit(:data)
       end
     end
 

@@ -1,4 +1,4 @@
-<%= form_with(model: image, local: true, multipart: true) do |form| %>
+<%= form_with(model: convert_image, local: true, multipart: true) do |form| %>
   <div class="form-group">
 
         <span class="btn btn-success btn-file">
@@ -11,10 +11,10 @@
   </div>
 <% end %>
 <script>
-  $(document).ready( function() {
-    $("#image_data").on('change', function(){
-        var fileName = $(this).val().split( '\\' ).pop();
-        $("#file-label").text(fileName);
-    });
+$(document).ready( function() {
+  $("#image_data").on('change', function(){
+      var fileName = $(this).val().split( '\\' ).pop();
+      $("#file-label").text(fileName);
   });
+});
 </script>

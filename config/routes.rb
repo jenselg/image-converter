@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  resources :convert_images
   resources :images
-  root 'images#index'
+  root 'public_pages#index'
   match '*path' => redirect('/'), via: :all
 end

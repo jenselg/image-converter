@@ -1,0 +1,18 @@
+<% unless @pixabay_images.blank? %>
+<div class="row">
+  <% @pixabay_images.each do |pixabay_image| %>
+    <div class="col-md-2" style="padding: 5px;">
+        <a href="<%= pixabay_image['pageURL'] %>" target="_blank" style="font-size: 12px;">
+          <%= image_tag pixabay_image['previewURL'], class: 'img-fluid img-dashed' %>
+        </a>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <br/>
+    <p style="font-size: 12px;">Images listed are provided by <a href="https://pixabay.com">Pixabay</a>. We are not responsible for content generated through their site.</p>
+    <img src="<%= asset_url('pixabay_logo.svg') %>" style="width: 75px;"/>
+  </div>
+</div>
+<% end %>

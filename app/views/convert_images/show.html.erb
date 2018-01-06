@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @convert_image.data %>
+</p>
+
+<p>
+  <strong>Access key:</strong>
+  <%= @convert_image.access_key %>
+</p>
+
+<%= link_to 'Edit', edit_convert_image_path(@convert_image) %> |
+<%= link_to 'Back', convert_images_path %>
