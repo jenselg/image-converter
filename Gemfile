@@ -33,6 +33,8 @@ gem 'sidekiq'
 gem 'whenever', require: false
 gem 'unsplash'
 gem 'pixabay-api', require: 'pixabay'
+gem 'faker'
+gem 'sitemap_generator'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

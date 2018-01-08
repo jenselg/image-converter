@@ -33,11 +33,46 @@ class ConvertImageUploader < CarrierWave::Uploader::Base
     # version :thumbnail do
     #   process resize_to_fit: [250, 250]
     # end
-  
+
+    version :jpg do
+      process convert: 'jpg'
+      def full_filename (for_file = file) 
+        "#{for_file}.jpg" 
+      end 
+    end
+
+    version :gif do
+      process convert: 'gif'
+      def full_filename (for_file = file) 
+        "#{for_file}.gif" 
+      end 
+    end
+
+    version :png do
+      process convert: 'png'
+      def full_filename (for_file = file) 
+        "#{for_file}.png" 
+      end 
+    end
+
+    version :tif do
+      process convert: 'tif'
+      def full_filename (for_file = file)
+        "#{for_file}.tif" 
+      end 
+    end
+
+    version :svg do
+      process convert: 'svg'
+      def full_filename (for_file = file)
+        "#{for_file}.svg" 
+      end 
+    end
+
     # Add a white list of extensions which are allowed to be uploaded.
     # For images you might use something like this:
      def extension_whitelist
-       %w(jpg jpeg gif png)
+       %w(jpg jpeg gif png tif tiff svg)
      end
   
     # Override the filename of the uploaded files:
@@ -51,7 +86,7 @@ class ConvertImageUploader < CarrierWave::Uploader::Base
     end
   
     def filename
-      "#{secure_token}.#{file.extension}" if original_filename.present?
+      "ALLPIC.SITE-#{secure_token}" if original_filename.present?
     end
   
     protected

@@ -20,5 +20,10 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.minute do
-    rake "cleaner:image_cleaner"
+    rake "cleaner:image_editor_cleaner"
+    rake "cleaner:image_converter_cleaner"
+end
+
+every 1.day do
+    rake "-s sitemap:refresh"
 end

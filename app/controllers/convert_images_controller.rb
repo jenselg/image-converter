@@ -12,6 +12,7 @@ class ConvertImagesController < ApplicationController
   # GET /convert_images/1
   # GET /convert_images/1.json
   def show
+
   end
 
   # POST /convert_images
@@ -23,11 +24,11 @@ class ConvertImagesController < ApplicationController
       if @convert_image.save
         @new_access_key = SecureRandom.uuid
         @convert_image.access_key = @new_access_key
-        session[:id] = @new_access_key
+        session[:convert_image] = @new_access_key
         @convert_image.save
         redirect_to @convert_image
       else
-        redirect_to convert_images_path, notice: "Filetypes allowed: jpg, jpeg, gif, png. Maximum filesize allowed: 5 MB."
+        redirect_to convert_images_path, notice: "Filetypes allowed: jpg, jpeg, gif, png, tif, tiff, svg. Maximum filesize allowed: 5 MB."
       end
     else
       redirect_to convert_images_path, notice: "Error. Please try again!"
@@ -36,11 +37,11 @@ class ConvertImagesController < ApplicationController
 
   private
     def set_session
-      unless session[:id].nil?
-        @current_session = ConvertImage.find_by(access_key: session[:id])
+      unless session[:convert_image].nil?
+        @current_session = ConvertImage.find_by(access_key: session[:convert_image])
         unless @current_session.nil?
-          if Time.now > @current_session.created_at + 1.hour
-            session.delete(:id)
+          if Time.now > @current_session.created_at + 5.minutes
+            session.delete(:convert_image)
             @current_session = nil
           end
         end
@@ -48,13 +49,13 @@ class ConvertImagesController < ApplicationController
     end
 
     def set_convert_image
-      unless session[:id].nil?
+      unless session[:convert_image].nil?
         @convert_image = ConvertImage.find(params[:id])
-        if @convert_image.access_key != session[:id]
-          session.delete(:id)
+        if @convert_image.access_key != session[:convert_image]
+          session.delete(:convert_image)
           redirect_to convert_images_path, notice: "Invalid session! Please select an image to edit and try again."
-        elsif Time.now > @convert_image.created_at + 1.hour
-          session.delete(:id)
+        elsif Time.now > @convert_image.created_at + 5.minutes
+          session.delete(:convert_image)
           redirect_to convert_images_path, notice: "Session expired! Please select an image to edit."
         end
       else

@@ -1,14 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4">
+    <!-- AllPic.site > converter > left -->
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-3614469044994240"
+    data-ad-slot="7233635185"
+    data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div class="col-md-4 text-center">
+    <%= image_tag @convert_image.data.jpg, class: 'width-250px img-dashed' %>
 
-<p>
-  <strong>Data:</strong>
-  <%= @convert_image.data %>
-</p>
+    <br/><br/>
 
-<p>
-  <strong>Access key:</strong>
-  <%= @convert_image.access_key %>
-</p>
+    <h4>Image Filetypes Available</h4>
+    <h6>Click on the button to download.</h6>
 
-<%= link_to 'Edit', edit_convert_image_path(@convert_image) %> |
-<%= link_to 'Back', convert_images_path %>
+    <a href="<%= @convert_image.data.jpg %>" class="btn btn-success" download>JPG</a>
+    <a href="<%= @convert_image.data.gif %>" class="btn btn-success" download>GIF</a>
+    <a href="<%= @convert_image.data.png %>" class="btn btn-success" download>PNG</a>
+    <a href="<%= @convert_image.data.tif %>" class="btn btn-success" download>TIF</a>
+    <a href="<%= @convert_image.data.svg %>" class="btn btn-success" download>SVG</a>
+
+    <br/><br/>
+
+    <%= link_to 'Convert Another Image', convert_images_path, class: 'btn btn-primary btn-sm' %>
+
+  </div>
+  <div class="col-md-4">
+    <!-- AllPic.site > converter > right -->
+    <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-3614469044994240"
+          data-ad-slot="7223872801"
+          data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</div>

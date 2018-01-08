@@ -1,2 +1,19 @@
-<h1>PublicPages#index</h1>
-<p>Find me in app/views/public_pages/index.html.erb</p>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <%= image_tag asset_url('picture.png'), class: "width-250px" %>
+        <h1>AllPic.site</h1>
+        <h5>Welcome to AllPic.site - image editor and converter.<br/>Generate quote images, memes, and other images for your favorite social media platform quickly and easily.</h4>
+        <br/>
+        <!-- AllPic.site > index > top -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3614469044994240"
+             data-ad-slot="8281466899"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <br/>
+        <%= link_to 'Quick Image Editor', images_path, class: 'btn btn-success btn-sm' %>&nbsp;<%= link_to 'Image Filetype Converter', convert_images_path, class: 'btn btn-success btn-sm' %>
+    </div>
+</div>
