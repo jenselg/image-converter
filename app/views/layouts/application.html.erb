@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AllPic.site - Edit, style and generate images for social media sites and other platforms.</title>
+    <title>Image Converter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="No-nonsense, easy image editing. Edit, style and generate different pixel sizes for your image, for the most popular social media platforms, as well as web standards and print media. " />
@@ -9,20 +9,18 @@
     <meta name="author" content="metatags generator">
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="7 days">
-    <meta name="propeller" content="8375babb8cfa7c6ca4e772e62ab21d37">
-    <meta name="p:domain_verify" content="0d8e32d2c5664ab9902c4d4b1008152a"/>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-3614469044994240",
+        google_ad_client: "",
         enable_page_level_ads: true
       });
     </script>
     <!-- BS4 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <!-- FONT AWESOME -->
@@ -35,12 +33,12 @@
     <!-- ADSENSE -->
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111644815-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UATAG"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-111644815-1');
+      gtag('config', '');
     </script>
     <!-- FAVICON -->
     <%= render 'application/favicon' %>
@@ -56,7 +54,7 @@
     <div class="container-fluid" style="padding-top: 20px;">
       <%= yield %>
     </div>
-    
+
     <div class="container-fluid">
       <%= render partial: 'layouts/footer' %>
     </div>
